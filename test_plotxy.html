@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Testing PlotXY</title>
+
+<link href="ext/style.css" rel="stylesheet">
+<script src="ext/jquery-2.1.4.min.js"></script>
+<script src="ext/myutl.js"></script>
+<script src="drawtools.js"></script>
+<script src="bins.js"></script>
+<script src="plotxy.js"></script>
+
+<script>
+
+var p1, p2;
+$(document).ready(function() {
+  p1 = new Plotxy($('#canvas-1')[0], 'first plot', 'x', 'y');
+  p2 = new Plotxy($('#canvas-2')[0], 'second plot', 'p', 'q');
+  p1.addCurve('series1a', [0.1, 0.2, 0.4, 0.8, 1.2], [0.15, 0.3, 0.8, 2.0, 4.0]);
+  p1.addCurve('series1b', [0.3, 0.4, 0.6, 0.8, 1.0], [1.0, 1.5, 3.0, 2.5, 1.0]);
+  p2.addCurve('series2a', [10.1, 20.2, 30.4, 31.8, 35.2], [10.15, 20.3, 24.8, 12.0, 24.0]);
+  p2.addCurve('series2b', [14.0, 18.0, 26.8, 34.2], [12.0, 16.0, 14.0, 12.0]);
+  p2.addCurve('series2c', [12.1, 16.2, 20.4, 31.8, 35.2], [24.0, 18.3, 14.8, 26.0, 20.0]);
+  p1.tracking = true;
+  p2.tracking = true;
+  p1.refresh();
+  p2.refresh();
+});
+
+</script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <ul class="navigation">
+        <li><a href="">Home</a></li>
+    </ul>
+
+    <header class="header">
+        <p class="logo">Testing PlotXY</p>
+    </header>
+
+    <article class="main">
+
+        <h2>Graph</h2>
+
+        <canvas id="canvas-1" height="400" width="500" style="-moz-user-select: none;" resize="true">Canvas not supported by this browser</canvas>
+        <canvas id="canvas-2" height="400" width="500" style="-moz-user-select: none;" resize="true">Canvas not supported by this browser</canvas>
+
+    </article>
+
+    <aside class="aside aside-1">
+
+        <h2>Control</h2>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="p1.setCurveProps('series1a', 'orange', 0.8, 'solid', 2, true, true, 's', 10, 1); p1.refresh();">Change 'series1a' properties 1</a></li>
+          <li><a href="javascript:void(0)" onclick="p1.setCurveProps('series1a', '#3fdba3', 1, 'solid', 2, true, true, 'O', 10, 1); p1.refresh();">Change 'series1a' properties 2</a></li>
+          <li><a href="javascript:void(0)" onclick="p2.setCurveProps('series2c', '#865ea0', 1, 'solid', 2, true, true, 'O', 10, 1); p2.refresh();">Change 'series2a' properties 1</a></li>
+        </ul>
+
+    </aside>
+
+    <footer class="footer">
+        <div id="copyright">
+            Except as noted, this content is licensed under a Creative Commons Attribution 3.0 License.
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
